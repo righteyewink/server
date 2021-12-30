@@ -1,0 +1,18 @@
+body {
+    div.title {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            text-align: center;
+            color: blue;
+            font-size: 40px;
+        }
+        img {
+            width: 12.5rem;
+            height: 10rem;
+        }
+    }
+}

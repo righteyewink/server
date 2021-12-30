@@ -1,0 +1,20 @@
+{% extends 'users/layout.html' %}
+
+{% load static %}
+
+{% block scss %}
+    <link rel="stylesheet" href="{% static 'users/css/index.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="welcome">
+        <h1>Welcome {{ request.user.first_name }}</h1>
+        <p>name: {{ request.user.username }}</p>
+        <p>email: {{ request.user.email }}</p>
+    </div>
+    <div>
+        <a href="{% url 'users:logout' %}">Log out</a>
+    </div>
+
+{% endblock %}

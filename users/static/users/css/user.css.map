@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,IAAI,EAAE,IAAI,CAAC;EACP,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,UAAU;EACtB,WAAW,EAAE,4BAA4B;CAC5C",
+    "sources": [
+        "../scss/user.scss",
+        "../scss/_global.scss",
+        "../scss/_user.scss"
+    ],
+    "names": [],
+    "file": "user.css"
+}

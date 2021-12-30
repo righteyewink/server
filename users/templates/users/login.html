@@ -1,0 +1,22 @@
+{% extends 'users/layout.html' %}
+
+{% load static %}
+
+{% block scss %}
+    <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    {% if message %}
+        <h1>{{ message }}</h1>
+    {% endif %}
+    <div class="login_form">
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+{% endblock %}

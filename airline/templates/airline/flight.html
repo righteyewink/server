@@ -1,0 +1,64 @@
+{% extends 'airline/layout.html' %}
+
+{% load static %}
+
+{% block scss %}
+    <link rel="stylesheet" href="{% static 'airline/css/flight.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="flight_detail">
+        <h1>Flight {{flight.id}}</h1>
+        <ul>
+            <li>Origin: {{ flight.origin }}</li>
+            <li>Destination: {{ flight.destination }}</li>
+            <li>Duration: {{ flight.duration }}</li>
+        </ul>
+    </div>
+
+    <div class="passenger">
+        <h1>Passengers</h1>
+        {% if passengers %}
+            <ul>
+                {% for passenger in passengers %}
+                    <li>{{ passenger }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <ul>
+                <li>No passenger</li>
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="book">
+        <h1>Book</h1>
+        <form action="{% url 'airline:book' flight.id %}" method="post">
+            {% csrf_token %}
+            <select name="passenger" id="" title="select a passenger">
+                {% for passenger in non_passengers %}
+                    <option value="{{ passenger.id }}">{{ passenger }}</option>
+                {% endfor %}    
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+    </div>   
+
+    <div class="unbook">
+        <h1>Unbook</h1>
+        <form action="{% url 'airline:unbook' flight.id %}" method="post">
+            {% csrf_token %}
+            <select name="passenger" id="" title="select a passenger">
+                {% for passenger in passengers %}
+                    <option value="{{ passenger.id }}">{{ passenger }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>  
+    </div>
+    <div>
+        <a href="{% url 'airline:index' %}">back to flight list</a>
+    </div>
+{% endblock %}

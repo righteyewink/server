@@ -1,0 +1,33 @@
+{% extends 'airline/layout.html' %}
+
+{% load static %}
+
+{% block scss %}
+    <link rel="stylesheet" href="{% static 'airline/css/index.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="title">
+        <h1>This is airline index page!</h1>
+        <img src="{% static 'airline/images/airline_logo-14.jpg' %}" alt="airline logo">
+    </div>
+
+    <div class="fight">
+        <h1>Here are flights</h1>
+        {% if flights %}
+            <ul>
+                {% for flight in flights %}
+                    <a href="{% url 'airline:flight' flight.id %}">
+                        <li>{{ flight }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <ul>
+                <li>No flight</li>
+            </ul>
+        {% endif %}
+    </div>
+ 
+{% endblock %}
